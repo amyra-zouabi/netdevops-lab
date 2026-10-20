@@ -1,0 +1,11 @@
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Building configuration...
+
+Current configuration:
+!
+frr version 8.4_git
+frr defaults traditional
+hostname leaf2
+no ipv6 forwarding
+!
+end

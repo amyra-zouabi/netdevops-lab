@@ -1,0 +1,39 @@
+host1:
+    hostname: 172.20.20.6
+    platform: linux
+
+host2:
+    hostname: 172.20.20.11
+    platform: linux
+
+host3:
+    hostname: 172.20.20.2
+    platform: linux
+
+host4:
+    hostname: 172.20.20.3
+    platform: linux
+
+leaf1:
+    hostname: 172.20.20.7
+    platform: linux
+
+leaf2:
+    hostname: 172.20.20.8
+    platform: linux
+
+leaf3:
+    hostname: 172.20.20.4
+    platform: linux
+
+leaf4:
+    hostname: 172.20.20.9
+    platform: linux
+
+spine1:
+    hostname: 172.20.20.10
+    platform: linux
+
+spine2:
+    hostname: 172.20.20.5
+    platform: linux
