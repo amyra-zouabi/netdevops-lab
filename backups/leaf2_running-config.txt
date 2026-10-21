@@ -8,4 +8,22 @@ frr defaults traditional
 hostname leaf2
 no ipv6 forwarding
 !
+interface eth1
+ ip address 10.0.2.2/30
+ ip ospf area 0
+exit
+!
+interface eth2
+ ip address 10.0.6.2/30
+ ip ospf area 0
+exit
+!
+interface eth3
+ ip address 10.0.10.1/30
+ ip ospf area 0
+exit
+!
+router ospf
+exit
+!
 end

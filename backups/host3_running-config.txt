@@ -8,4 +8,12 @@ frr defaults traditional
 hostname host3
 no ipv6 forwarding
 !
+interface eth1
+ ip address 10.0.11.2/30
+ ip ospf area 0
+exit
+!
+router ospf
+exit
+!
 end

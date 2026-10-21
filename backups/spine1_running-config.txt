@@ -8,4 +8,27 @@ frr defaults traditional
 hostname spine1
 no ipv6 forwarding
 !
+interface eth1
+ ip address 10.0.1.1/30
+ ip ospf area 0
+exit
+!
+interface eth2
+ ip address 10.0.2.1/30
+ ip ospf area 0
+exit
+!
+interface eth3
+ ip address 10.0.3.1/30
+ ip ospf area 0
+exit
+!
+interface eth4
+ ip address 10.0.4.1/30
+ ip ospf area 0
+exit
+!
+router ospf
+exit
+!
 end
