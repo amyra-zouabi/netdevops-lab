@@ -1,0 +1,17 @@
+---
+- name: Configure OSPF on all devices
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Start the ospfd daemon
+      ansible.builtin.raw: /usr/lib/frr/ospfd -d -F traditional -A 127.0.0.1
+      ignore_errors: yes
+
+    - name: Enable OSPF routing process
+      ansible.builtin.raw: >
+        vtysh -c "configure terminal" -c "router ospf" -c "exit" -c "exit"
+
+    - name: Enable OSPF on each interface
+      ansible.builtin.raw: >
+        vtysh -c "configure terminal" -c "interface {{ item.name }}" -c "ip ospf area 0" -c "exit" -c "exit"
+      loop: "{{ interfaces }}"

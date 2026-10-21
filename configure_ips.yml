@@ -1,0 +1,9 @@
+---
+- name: Assign IP addresses to data interfaces
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Configure IP on each interface
+      ansible.builtin.raw: >
+        vtysh -c "configure terminal" -c "interface {{ item.name }}" -c "ip address {{ item.ip }}" -c "exit" -c "exit"
+      loop: "{{ interfaces }}"

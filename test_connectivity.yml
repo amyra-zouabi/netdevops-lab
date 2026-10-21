@@ -1,0 +1,12 @@
+---
+- name: Test connectivity to all lab devices
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Run show version via vtysh
+      ansible.builtin.raw: vtysh -c "show version"
+      register: result
+
+    - name: Print output
+      debug:
+        var: result.stdout
