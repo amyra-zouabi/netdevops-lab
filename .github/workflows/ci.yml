@@ -18,3 +18,25 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Check Python syntax
+        run: |
+          for file in *.py; do
+            python -m py_compile "$file"
+          done
+
+      - name: Validate YAML files
+        run: |
+          pip install pyyaml
+          python -c "
+          import yaml, glob
+          for f in glob.glob('*.yml') + glob.glob('*.yaml') + glob.glob('inventory/*.yaml'):
+              with open(f) as file:
+                  yaml.safe_load(file)
+              print(f'OK: {f}')
+          "
+
+      - name: Check Ansible playbook syntax
+        run: |
+          ansible-playbook --syntax-check -i ansible-inventory.yml configure_ips.yml
+          ansible-playbook --syntax-check -i ansible-inventory.yml configure_ospf.yml
+          ansible-playbook --syntax-check -i ansible-inventory.yml test_connectivity.yml
